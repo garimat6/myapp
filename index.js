@@ -39,12 +39,12 @@ app.post('/webhook/', function (req, res) {
 				continue
 			}
 			
-			if (text="LinkAccnt") {
+			if (text==="LinkAccnt") {
 		          sendAccountLinkMessage(sender)
 			  continue
 			}
 			
-			if (text="UnlinkAccnt") {
+			if (text==="UnlinkAccnt") {
 			  sendAccountUnLinkMessage(sender);
 			  continue;
 			}
@@ -182,7 +182,7 @@ function sendAccountUnLinkMessage(sender) {
       "payload": {
         "template_type": "generic",
         "elements": [{
-          "title": "Welcome to M-Bank",
+          "title": "Welcome to M-Bank Logout flow",
           "image_url": "http://www.example.com/images/m-bank.png",
           "buttons": [{
             "type": "account_unlink"
