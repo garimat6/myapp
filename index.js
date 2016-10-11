@@ -43,6 +43,11 @@ app.post('/webhook/', function (req, res) {
 		          sendAccountLinkMessage(sender)
 			  continue
 			}
+			
+			if (text="UnlinkAccnt") {
+			  sendAccountUnLinkMessage(sender);
+			  continue;
+			}
 			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
 		}
 		if (event.postback) {
