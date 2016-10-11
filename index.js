@@ -63,7 +63,7 @@ app.post('/webhook/', function (req, res) {
                 }
 		
                 if (event.account_linking) {
-                        let text = JSON.stringify(event.account_linking)
+                        let text = JSON.stringify(event)
                         sendTextMessage(sender, "Account Linking event data at webhook: "+text.substring(0, 200), token)
                         continue
                 }
