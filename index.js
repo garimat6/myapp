@@ -137,7 +137,6 @@ function sendGenericMessage(sender) {
 
 function sendAccountLinkMessage(sender) {
   let messageData = {
-   "message": {
     "attachment": {
       "type": "template",
       "payload": {
@@ -152,7 +151,6 @@ function sendAccountLinkMessage(sender) {
         }]
       }
     }
-  }
   }
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages',
