@@ -170,6 +170,39 @@ function sendAccountLinkMessage(sender) {
 }
 
 
+function sendAccountUnLinkMessage(sender) {
+  let messageData = {
+     "attachment": {
+      "type": "template",
+      "payload": {
+        "template_type": "generic",
+        "elements": [{
+          "title": "Welcome to M-Bank",
+          "image_url": "http://www.example.com/images/m-bank.png",
+          "buttons": [{
+            "type": "account_unlink"
+          }]
+        }]
+      }
+    }
+  }
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: {access_token:token},
+    method: 'POST',
+    json: {
+      recipient: {id:sender},
+      message: messageData,
+    }
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending messages: ', error)
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error)
+    }
+  })
+}
+
 
 // spin spin sugar
 app.listen(app.get('port'), function() {
