@@ -61,7 +61,13 @@ app.post('/webhook/', function (req, res) {
                         sendTextMessage(sender, "Referral event received: "+text.substring(0, 200), token)
                         continue
                 }
-		
+
+		if (event.attachments) {
+                        let text = JSON.stringify(event.attachments)
+                        sendTextMessage(sender, "Attachments received: "+text.substring(0, 200), token)
+                        continue
+                }
+
                 if (event.account_linking) {
                         let text = JSON.stringify(event)
                         sendTextMessage(sender, "Account Linking event data at webhook: "+text.substring(0, 200), token)
