@@ -52,7 +52,7 @@ app.post('/webhook/', function (req, res) {
 			}
 			
 			if (text === "sharecta") {
-			 	sendsharectapreview(sender);
+			 	sendsharecta(sender);
 				continue;
 			}
 			
@@ -169,6 +169,52 @@ function sendGenericMessage(sender) {
 		}
 	})
 }
+
+
+function sendsharecta(sender) {
+	let messageData = {
+		
+  "attachment": {
+    "type": "template",
+    "payload": {
+      "template_type": "generic",
+      "elements": [
+        {
+          "title": "Welcome to Peter",
+          "image_url": "https://petersfancybrownhats.com/company_image.png",
+          "subtitle": "We have got the right hat for everyone.",
+          "default_action": {
+            "type": "web_url",
+            "url": "https://www.google.com"
+          },
+          "buttons": [
+          {
+            "type": "element_share"
+          }
+        ]
+      }
+    ]
+  }
+}		
+	}
+	request({
+		url: 'https://graph.facebook.com/v2.6/me/messages',
+		qs: {access_token:token},
+		method: 'POST',
+		json: {
+			recipient: {id:sender},
+			message: messageData,
+		}
+	}, function(error, response, body) {
+		if (error) {
+			console.log('Error sending messages: ', error)
+		} else if (response.body.error) {
+			console.log('Error: ', response.body.error)
+		}
+	})
+}
+
+
 
 
 function sendsharectapreview(sender) {
