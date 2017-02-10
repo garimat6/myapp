@@ -50,6 +50,17 @@ app.post('/webhook/', function (req, res) {
 			  sendAccountUnLinkMessage(sender);
 			  continue;
 			}
+			
+			if (text === "sharecta") {
+			 	sendsharectapreview(sender);
+				continue;
+			}
+			
+			if (text = "previewsharecta") {
+			 	sendsharectapreview(sender);
+				continue;
+				
+			}
 			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
 		}
 		if (event.postback) {
@@ -108,6 +119,8 @@ function sendTextMessage(sender, text) {
 	})
 }
 
+
+
 function sendGenericMessage(sender) {
 	let messageData = {
 		"attachment": {
@@ -139,6 +152,76 @@ function sendGenericMessage(sender) {
 				}]
 			}
 		}
+	}
+	request({
+		url: 'https://graph.facebook.com/v2.6/me/messages',
+		qs: {access_token:token},
+		method: 'POST',
+		json: {
+			recipient: {id:sender},
+			message: messageData,
+		}
+	}, function(error, response, body) {
+		if (error) {
+			console.log('Error sending messages: ', error)
+		} else if (response.body.error) {
+			console.log('Error: ', response.body.error)
+		}
+	})
+}
+
+
+function sendsharectapreview(sender) {
+	let messageData = {
+		
+  "attachment": {
+    "type": "template",
+    "payload": {
+      "template_type": "generic",
+      "elements": [
+        {
+          "title": "Welcome to Peter",
+          "image_url": "https://petersfancybrownhats.com/company_image.png",
+          "subtitle": "We have got the right hat for everyone.",
+          "default_action": {
+            "type": "web_url",
+            "url": "https://www.google.com"
+          },
+          "buttons": [
+          {
+            "type": "element_share",
+            "share_contents": {
+              "attachment": {
+                "type": "template",
+                "payload": {
+                  "template_type": "generic",
+                  "elements": [
+                    {
+                      "title": "Welcome to Peter",
+                      "image_url": "https://petersfancybrownhats.com/company_image.png",
+                      "subtitle": "We have got the right hat for everyone.",
+                      "default_action": {
+                        "type": "web_url",
+                        "url": "https://www.fb.com"
+                      },
+                      "buttons": [
+                        {
+                          "type": "web_url",
+                          "url": "https://www.google.com",
+                          "title": "Search in Google"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}		
 	}
 	request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
