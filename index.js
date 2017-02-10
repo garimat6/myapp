@@ -35,18 +35,18 @@ app.post('/webhook/', function (req, res) {
 		
 		if (event.message && event.message.text) {
 			sendTextMessage(sender, "senderId: "+ sender, token);
-			let text = event.message.text
-			if (text === 'Generic') {
+			let text = event.message.text.toLowerCase();
+			if (text === 'generic') {
 				sendGenericMessage(sender)
 				continue
 			}
 			
-			if (text==="LinkAccnt") {
+			if (text==="linkaccnt") {
 		          sendAccountLinkMessage(sender)
 			  continue
 			}
 			
-			if (text==="UnlinkAccnt") {
+			if (text==="unlinkaccnt") {
 			  sendAccountUnLinkMessage(sender);
 			  continue;
 			}
