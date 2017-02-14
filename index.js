@@ -181,7 +181,7 @@ function sendsharecta(sender) {
       "elements": [
         {
           "title": "Welcome to Peter",
-          "image_url": "https://petersfancybrownhats.com/company_image.png",
+          "image_url": "https://tctechcrunch2011.files.wordpress.com/2016/04/facebook-chatbot-alt.png?w=738",
           "subtitle": "We have got the right hat for everyone.",
           "default_action": {
             "type": "web_url",
@@ -243,8 +243,8 @@ function sendsharectapreview(sender) {
                   "template_type": "generic",
                   "elements": [
                     {
-                      "title": "Welcome to Peter",
-                      "image_url": "https://petersfancybrownhats.com/company_image.png",
+                      "title": "In Preview Welcome to Peter",
+                      "image_url": "https://tctechcrunch2011.files.wordpress.com/2016/04/facebook-chatbot-alt.png?w=738",
                       "subtitle": "We have got the right hat for everyone.",
                       "default_action": {
                         "type": "web_url",
