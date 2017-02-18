@@ -62,7 +62,7 @@ app.post('/webhook/', function (req, res) {
 				
 			}
 			
-			if (text = "configpreviewshare") {
+			if (text == "configpreviewshare") {
 				sendconfigsharecta(sender);
 				continue;
 			}
