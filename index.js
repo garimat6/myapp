@@ -74,7 +74,7 @@ app.post('/webhook/', function (req, res) {
 			  sendTextMessage(sender, texttosend)
 			}
 			
-			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+			//sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
 		}
 		if (event.postback) {
 			sendTextMessage(sender, "senderId: "+ sender, token);
