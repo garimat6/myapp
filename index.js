@@ -262,7 +262,7 @@ function sendsharectapreview(sender) {
       "elements": [
         {
           "title": "Welcome to Peter",
-          "image_url": "https://petersfancybrownhats.com/company_image.png",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg",
           "subtitle": "We have got the right hat for everyone.",
           "default_action": {
             "type": "web_url",
