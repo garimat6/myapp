@@ -114,7 +114,8 @@ app.post('/webhook/', function (req, res) {
 
 // recommended to inject access tokens as environmental variables, e.g.
 // const token = process.env.PAGE_ACCESS_TOKEN
-const token = "EAALsKrSyf2MBAHaqfZAvV9JmUaw6meqXJ8bpWF2ZCWPSOkDXm7pJUb3JGGZCy1mSvhg82cj9E8JRYbwUvpqzP2m8fZAn9edXZA5LPasfl0P9rCb8WNg989FI5HLJj7WG3tQtFc8ecYYjT2q6aLMI7O4B1HZCVZCF4HzIuI5DWy34AZDZD"
+const token = "EAALsKrSyf2MBAE6CaRzMrTlsuD6qdOPfyS36CSiN4xNT7o31tBKTTg6KMLeDQIzr987nQeWjFZAnNZBaFh2WiGK9AZBKhsEOj55ehdB3IZAeuXvghAmrc1yudTNIhHMRzo85oh2nuwZAS9yZCWRSdwGoYtHODptd1FptHtPnlhTQZDZD";
+//const token = "EAALsKrSyf2MBAHaqfZAvV9JmUaw6meqXJ8bpWF2ZCWPSOkDXm7pJUb3JGGZCy1mSvhg82cj9E8JRYbwUvpqzP2m8fZAn9edXZA5LPasfl0P9rCb8WNg989FI5HLJj7WG3tQtFc8ecYYjT2q6aLMI7O4B1HZCVZCF4HzIuI5DWy34AZDZD"
 
 function sendconfigsharecta(sender) {
 	let messageData = {
