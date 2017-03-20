@@ -404,7 +404,7 @@ function sendAccountLinkMessageNakuma(sender) {
           "image_url": "http://www.example.com/images/m-bank.png",
           "buttons": [{
             "type": "account_link",
-            "url": "https://our.intern.facebook.com/intern/messaging/account_linking_tool"
+            "url": "https://wwww.facebook.com"
           }]
         }]
       }
