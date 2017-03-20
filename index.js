@@ -46,6 +46,13 @@ app.post('/webhook/', function (req, res) {
 			  continue
 			}
 			
+						
+			if (text==="linkaccntnakuma") {
+		          sendAccountLinkMessageNakuma(sender)
+			  continue
+			}
+			
+			
 			if (text==="unlinkaccnt") {
 			  sendAccountUnLinkMessage(sender);
 			  continue;
@@ -351,6 +358,42 @@ function sendsharectapreview(sender) {
 
 
 function sendAccountLinkMessage(sender) {
+  let messageData = {
+    "attachment": {
+      "type": "template",
+      "payload": {
+        "template_type": "generic",
+        "elements": [{
+          "title": "Welcome to M-Bank",
+          "image_url": "http://www.example.com/images/m-bank.png",
+          "buttons": [{
+            "type": "account_link",
+            "url": "https://our.intern.facebook.com/intern/messaging/account_linking_tool"
+          }]
+        }]
+      }
+    }
+  }
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: {access_token:token},
+    method: 'POST',
+    json: {
+      recipient: {id:sender},
+      message: messageData,
+    }
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending messages: ', error)
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error)
+    }
+  })
+}
+
+
+
+function sendAccountLinkMessageNakuma(sender) {
   let messageData = {
     "attachment": {
       "type": "template",
