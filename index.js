@@ -126,8 +126,8 @@ const token = "EAALsKrSyf2MBAE6CaRzMrTlsuD6qdOPfyS36CSiN4xNT7o31tBKTTg6KMLeDQIzr
 
 function sendconfigsharecta(sender) {
 	let messageData = {
-		//"attachment":{"type":"template","payload":{"template_type":"button","text":"Extension test","buttons":[{"title":"full intern", "type":"web_url", "webview_height_ratio": "full", "messenger_extensions": true, "url":"https://tbd-agent.herokuapp.com/webview.html?env=intern"}, {"title":"tall prod", "type":"web_url", "webview_height_ratio": "tall", "messenger_extensions": true, "url":"https://tbd-agent.herokuapp.com/webview.html"}]}}	
-		"attachment": {
+		"attachment":{"type":"template","payload":{"template_type":"button","text":"Extension test","buttons":[{"title":"full intern", "type":"web_url", "webview_height_ratio": "full", "messenger_extensions": true, "url":"https://tbd-agent.herokuapp.com/webview.html?env=intern"}, {"title":"tall prod", "type":"web_url", "webview_height_ratio": "tall", "messenger_extensions": true, "url":"https://tbd-agent.herokuapp.com/webview.html"}]}}	
+		/*"attachment": {
 			"type":"template",
 			"payload":{
 				"template_type":"generic",
@@ -138,7 +138,8 @@ function sendconfigsharecta(sender) {
                                  },
                                  "buttons":[{"title":"full intern", "type":"web_url", "webview_height_ratio": "full", "messenger_extensions": true, "url":"https://tbd-agent.herokuapp.com/webview.html?env=intern"}, {"title":"tall prod", "type":"web_url", "webview_height_ratio": "tall", "messenger_extensions": true, "url":"https://tbd-agent.herokuapp.com/webview.html"}, {"type":"element_share"}]
 			}]
-			}}
+			}*/
+	}
 
 	
 	request({
