@@ -157,7 +157,7 @@ function sendconfigsharecta(sender, pageid) {
 	
 	request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: {access_token:token},
+		qs: {access_token: gettoken(pageid)},
 		method: 'POST',
 		json: {
 			recipient: {id:sender},
@@ -179,7 +179,7 @@ function sendconfigsharenakumacta(sender, pageid) {
 	
 	request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: {access_token:token},
+		qs: {access_token:gettoken(pageid)},
 		method: 'POST',
 		json: {
 			recipient: {id:sender},
@@ -198,7 +198,7 @@ function sendTextMessage(sender, pageid, text) {
 	
 	request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: {access_token:token},
+		qs: {access_token:gettoken(pageid)},
 		method: 'POST',
 		json: {
 			recipient: {id:sender},
@@ -251,7 +251,7 @@ function sendGenericMessage(sender, pageid) {
 	}
 	request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: {access_token:token},
+		qs: {access_token:gettoken(pageid)},
 		method: 'POST',
 		json: {
 			recipient: {id:sender},
@@ -295,7 +295,7 @@ function sendsharecta(sender, pageid) {
 	}
 	request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: {access_token:token},
+		qs: {access_token:gettoken(pageid)},
 		method: 'POST',
 		json: {
 			recipient: {id:sender},
@@ -367,7 +367,7 @@ function sendsharectapreview(sender, pageid) {
 	}
 	request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: {access_token:token},
+		qs: {access_token:gettoken(pageid)},
 		method: 'POST',
 		json: {
 			recipient: {id:sender},
@@ -402,7 +402,7 @@ function sendAccountLinkMessage(sender, pageid) {
   }
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: {access_token:token},
+    qs: {access_token:gettoken(pageid)},
     method: 'POST',
     json: {
       recipient: {id:sender},
@@ -438,7 +438,7 @@ function sendAccountLinkMessageNakuma(sender, pageid) {
   }
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: {access_token:token},
+    qs: {access_token:gettoken(pageid)},
     method: 'POST',
     json: {
       recipient: {id:sender},
@@ -472,7 +472,7 @@ function sendAccountUnLinkMessage(sender, pageid) {
   }
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: {access_token:token},
+    qs: {access_token:gettoken(pageid)},
     method: 'POST',
     json: {
       recipient: {id:sender},
