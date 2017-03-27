@@ -37,78 +37,78 @@ app.post('/webhook/', function (req, res) {
 			sendTextMessage(sender, "senderId: "+ sender + " page id  " + page_id, token);
 			let text = event.message.text.toLowerCase();
 			if (text === 'generic') {
-				sendGenericMessage(sender)
+				sendGenericMessage(sender, page_id)
 				continue
 			}
 			
 			if (text==="linkaccnt") {
-		          sendAccountLinkMessage(sender)
+		          sendAccountLinkMessage(sender, page_id)
 			  continue
 			}
 			
 						
 			if (text==="linkaccntnakuma") {
-		          sendAccountLinkMessageNakuma(sender)
+		          sendAccountLinkMessageNakuma(sender, page_id)
 			  continue
 			}
 			
 			
 			if (text==="unlinkaccnt") {
-			  sendAccountUnLinkMessage(sender);
+			  sendAccountUnLinkMessage(sender, page_id);
 			  continue;
 			}
 			
 			if (text === "sharecta") {
-			 	sendsharecta(sender);
+			 	sendsharecta(sender, page_id);
 				continue;
 			}
 			
 			if (text == "previewsharecta") {
-			 	sendsharectapreview(sender);
+			 	sendsharectapreview(sender, page_id);
 				continue;
 				
 			}
 			
 			if (text == "configpreviewshare") {
-				sendconfigsharecta(sender);
+				sendconfigsharecta(sender, page_id);
 				continue;
 			}
 			
 			if (text == "configsharenakumacta") {
-			       sendconfigsharenakumacta(sender);
+			       sendconfigsharenakumacta(sender, page_id);
 				continue;
 			}
 			if (text == "help") {
 		          let texttosend = "I can respond to following commands:"
-			  sendTextMessage(sender, texttosend)
+			  sendTextMessage(sender,page_id, texttosend)
 			  texttosend = "generic, linkaccnt, unlinkaccnt, sharecta, previewsharecta, configpreviewshare"
-			  sendTextMessage(sender, texttosend)
+			  sendTextMessage(sender, page_id, texttosend)
 			}
 			
 			//sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
 		}
 		if (event.postback) {
-			sendTextMessage(sender, "senderId: "+ sender, token);
+			sendTextMessage(sender, page_id, "senderId: "+ sender, token);
 			let text = JSON.stringify(event.postback)
-			sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
+			sendTextMessage(sender, page_id, "Postback received: "+text.substring(0, 200), token)
 			continue
 		}
 
                 if (event.referral) {
                         let text = JSON.stringify(event.referral)
-                        sendTextMessage(sender, "Referral event received: "+text.substring(0, 200), token)
+                        sendTextMessage(sender, page_id, "Referral event received: "+text.substring(0, 200), token)
                         continue
                 }
 
 		if (event.attachments) {
                         let text = JSON.stringify(event.attachments)
-                        sendTextMessage(sender, "Attachments received: "+text.substring(0, 200), token)
+                        sendTextMessage(sender, page_id, "Attachments received: "+text.substring(0, 200), token)
                         continue
                 }
 
                 if (event.account_linking) {
                         let text = JSON.stringify(event)
-                        sendTextMessage(sender, "Account Linking event data at webhook: "+text.substring(0, 200), token)
+                        sendTextMessage(sender, page_id, "Account Linking event data at webhook: "+text.substring(0, 200), token)
                         continue
                 }
 		
@@ -125,7 +125,10 @@ const token = "EAALsKrSyf2MBAE6CaRzMrTlsuD6qdOPfyS36CSiN4xNT7o31tBKTTg6KMLeDQIzr
 const token2 = "EAALsKrSyf2MBAKJ0tPOmslV6TDT5WEMqpm3LfsIcC7QUjyw3dpXsijypZAZCUnURvreW5Ow88BeY0ZAf6FXvHlZAQ7ZAdAJ1X4xgZBOGXzH9elSNSZAALqDWDZBBgpPErrNLoMPjvohvWxEJXcNJVxO2EeYe2DfjPGQPTwBM0eVvEgZDZD";
 //const token = "EAALsKrSyf2MBAHaqfZAvV9JmUaw6meqXJ8bpWF2ZCWPSOkDXm7pJUb3JGGZCy1mSvhg82cj9E8JRYbwUvpqzP2m8fZAn9edXZA5LPasfl0P9rCb8WNg989FI5HLJj7WG3tQtFc8ecYYjT2q6aLMI7O4B1HZCVZCF4HzIuI5DWy34AZDZD"
 
-function sendconfigsharecta(sender) {
+function gettoken(page_id) {
+	return page_id === 1535203003449978 ? token: token2;
+}
+function sendconfigsharecta(sender, pageid) {
 	let messageData = {
 		//"attachment":{"type":"template","payload":{"template_type":"button","text":"Extension test","buttons":[{"title":"full intern", "type":"web_url", "webview_height_ratio": "full", "messenger_extensions": true, "url":"https://tbd-agent.herokuapp.com/webview.html?env=intern"}, {"title":"tall prod", "type":"web_url", "webview_height_ratio": "tall", "messenger_extensions": true, "url":"https://tbd-agent.herokuapp.com/webview.html"}]}}
 		    "attachment":{
@@ -169,7 +172,7 @@ function sendconfigsharecta(sender) {
 	})
 }
 
-function sendconfigsharenakumacta(sender) {
+function sendconfigsharenakumacta(sender, pageid) {
 	let messageData = {
 		"attachment":{"type":"template","payload":{"template_type":"button","text":"Extension test","buttons":[{"title":"full intern", "type":"web_url", "webview_height_ratio": "full", "messenger_extensions": true, "url":"https://tbd-agent.herokuapp.com/webview.html?env=intern"}, {"title":"tall prod", "type":"web_url", "webview_height_ratio": "tall", "messenger_extensions": true, "url":"https://tbd-agent.herokuapp.com/webview.html"}, {"title":"tall sb", "type":"web_url", "webview_height_ratio": "tall", "messenger_extensions": true, "url":"https://tbd-agent.herokuapp.com/webview.html?env=nakuma.sb"}]}}		
 	}
@@ -190,7 +193,7 @@ function sendconfigsharenakumacta(sender) {
 		}
 	})
 }
-function sendTextMessage(sender, text) {
+function sendTextMessage(sender, pageid, text) {
 	let messageData = { text:text }
 	
 	request({
@@ -214,7 +217,7 @@ function sendTextMessage(sender, text) {
 
 
 
-function sendGenericMessage(sender) {
+function sendGenericMessage(sender, pageid) {
 	let messageData = {
 		"attachment": {
 			"type": "template",
@@ -264,7 +267,7 @@ function sendGenericMessage(sender) {
 }
 
 
-function sendsharecta(sender) {
+function sendsharecta(sender, pageid) {
 	let messageData = {
 		
   "attachment": {
@@ -310,7 +313,7 @@ function sendsharecta(sender) {
 
 
 
-function sendsharectapreview(sender) {
+function sendsharectapreview(sender, pageid) {
 	let messageData = {
 		
   "attachment": {
@@ -380,7 +383,7 @@ function sendsharectapreview(sender) {
 }
 
 
-function sendAccountLinkMessage(sender) {
+function sendAccountLinkMessage(sender, pageid) {
   let messageData = {
     "attachment": {
       "type": "template",
@@ -416,7 +419,7 @@ function sendAccountLinkMessage(sender) {
 
 
 
-function sendAccountLinkMessageNakuma(sender) {
+function sendAccountLinkMessageNakuma(sender, pageid) {
   let messageData = {
     "attachment": {
       "type": "template",
@@ -451,7 +454,7 @@ function sendAccountLinkMessageNakuma(sender) {
 }
 
 
-function sendAccountUnLinkMessage(sender) {
+function sendAccountUnLinkMessage(sender, pageid) {
   let messageData = {
      "attachment": {
       "type": "template",
