@@ -143,7 +143,7 @@ function sendconfigsharecta(sender, pageid) {
             "subtitle":"We\'ve got the right hat for everyone.",
             "default_action": {
               "type": "web_url",
-              "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
+              "url": "https://tbd-agent.herokuapp.com/webview.html?env=intern",
               "messenger_extensions": true,
               "webview_height_ratio": "tall",
               "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
