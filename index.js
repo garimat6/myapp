@@ -34,7 +34,7 @@ app.post('/webhook/', function (req, res) {
 		let sender = event.sender.id
 		let page_id = event.recipient.id
 		if (event.message && event.message.text) {
-			sendTextMessage(sender, "senderId: "+ sender + " page id  " + page_id, token);
+			sendTextMessage(sender, page_id, "senderId: "+ sender + " page id  " + page_id);
 			let text = event.message.text.toLowerCase();
 			if (text === 'generic') {
 				sendGenericMessage(sender, page_id)
@@ -88,27 +88,27 @@ app.post('/webhook/', function (req, res) {
 			//sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
 		}
 		if (event.postback) {
-			sendTextMessage(sender, page_id, "senderId: "+ sender, token);
+			sendTextMessage(sender, page_id, "senderId: "+ sender);
 			let text = JSON.stringify(event.postback)
-			sendTextMessage(sender, page_id, "Postback received: "+text.substring(0, 200), token)
+			sendTextMessage(sender, page_id, "Postback received: "+text.substring(0, 200))
 			continue
 		}
 
                 if (event.referral) {
                         let text = JSON.stringify(event.referral)
-                        sendTextMessage(sender, page_id, "Referral event received: "+text.substring(0, 200), token)
+                        sendTextMessage(sender, page_id, "Referral event received: "+text.substring(0, 200))
                         continue
                 }
 
 		if (event.attachments) {
                         let text = JSON.stringify(event.attachments)
-                        sendTextMessage(sender, page_id, "Attachments received: "+text.substring(0, 200), token)
+                        sendTextMessage(sender, page_id, "Attachments received: "+text.substring(0, 200))
                         continue
                 }
 
                 if (event.account_linking) {
                         let text = JSON.stringify(event)
-                        sendTextMessage(sender, page_id, "Account Linking event data at webhook: "+text.substring(0, 200), token)
+                        sendTextMessage(sender, page_id, "Account Linking event data at webhook: "+text.substring(0, 200))
                         continue
                 }
 		
