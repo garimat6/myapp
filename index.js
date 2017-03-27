@@ -166,7 +166,6 @@ function sendconfigsharecta(sender, pageid) {
 	}, function(error, response, body) {
 		if (error) {
 			console.log('Error sending messages: ', error)
-			sendTextMessage(sender, pageid, "Error in send"))
 		} else if (response.body.error) {
 			console.log('Error: ', response.body.error)
 		}
