@@ -129,6 +129,7 @@ function gettoken(page_id) {
 	return page_id == "1535203003449978" ? token: token2;
 }
 function sendconfigsharecta(sender, pageid) {
+	let token_val = gettoken(pageid)
 	let messageData = {
 		//"attachment":{"type":"template","payload":{"template_type":"button","text":"Extension test","buttons":[{"title":"full intern", "type":"web_url", "webview_height_ratio": "full", "messenger_extensions": true, "url":"https://tbd-agent.herokuapp.com/webview.html?env=intern"}, {"title":"tall prod", "type":"web_url", "webview_height_ratio": "tall", "messenger_extensions": true, "url":"https://tbd-agent.herokuapp.com/webview.html"}]}}
 		    "attachment":{
@@ -157,7 +158,7 @@ function sendconfigsharecta(sender, pageid) {
 	
 	request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: {access_token: gettoken(pageid)},
+		qs: {access_token: token_val},
 		method: 'POST',
 		json: {
 			recipient: {id:sender},
