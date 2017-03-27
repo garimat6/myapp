@@ -126,7 +126,7 @@ const token2 = "EAALsKrSyf2MBAKJ0tPOmslV6TDT5WEMqpm3LfsIcC7QUjyw3dpXsijypZAZCUnU
 //const token = "EAALsKrSyf2MBAHaqfZAvV9JmUaw6meqXJ8bpWF2ZCWPSOkDXm7pJUb3JGGZCy1mSvhg82cj9E8JRYbwUvpqzP2m8fZAn9edXZA5LPasfl0P9rCb8WNg989FI5HLJj7WG3tQtFc8ecYYjT2q6aLMI7O4B1HZCVZCF4HzIuI5DWy34AZDZD"
 
 function gettoken(page_id) {
-	return page_id === 1535203003449978 ? token: token2;
+	return page_id == "1535203003449978" ? token: token2;
 }
 function sendconfigsharecta(sender, pageid) {
 	let messageData = {
@@ -198,7 +198,7 @@ function sendTextMessage(sender, pageid, text) {
 	let token_val = gettoken(pageid)
 	request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: {access_token: token},
+		qs: {access_token: token_val},
 		method: 'POST',
 		json: {
 			recipient: {id:sender},
