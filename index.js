@@ -32,9 +32,9 @@ app.post('/webhook/', function (req, res) {
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = req.body.entry[0].messaging[i]
 		let sender = event.sender.id
-		
+		let page_id = event.recipient.id
 		if (event.message && event.message.text) {
-			sendTextMessage(sender, "senderId: "+ sender, token);
+			sendTextMessage(sender, "senderId: "+ sender + " page id  " + page_id, token);
 			let text = event.message.text.toLowerCase();
 			if (text === 'generic') {
 				sendGenericMessage(sender)
@@ -122,6 +122,7 @@ app.post('/webhook/', function (req, res) {
 // recommended to inject access tokens as environmental variables, e.g.
 // const token = process.env.PAGE_ACCESS_TOKEN
 const token = "EAALsKrSyf2MBAE6CaRzMrTlsuD6qdOPfyS36CSiN4xNT7o31tBKTTg6KMLeDQIzr987nQeWjFZAnNZBaFh2WiGK9AZBKhsEOj55ehdB3IZAeuXvghAmrc1yudTNIhHMRzo85oh2nuwZAS9yZCWRSdwGoYtHODptd1FptHtPnlhTQZDZD";
+const token2 = "EAALsKrSyf2MBAKJ0tPOmslV6TDT5WEMqpm3LfsIcC7QUjyw3dpXsijypZAZCUnURvreW5Ow88BeY0ZAf6FXvHlZAQ7ZAdAJ1X4xgZBOGXzH9elSNSZAALqDWDZBBgpPErrNLoMPjvohvWxEJXcNJVxO2EeYe2DfjPGQPTwBM0eVvEgZDZD";
 //const token = "EAALsKrSyf2MBAHaqfZAvV9JmUaw6meqXJ8bpWF2ZCWPSOkDXm7pJUb3JGGZCy1mSvhg82cj9E8JRYbwUvpqzP2m8fZAn9edXZA5LPasfl0P9rCb8WNg989FI5HLJj7WG3tQtFc8ecYYjT2q6aLMI7O4B1HZCVZCF4HzIuI5DWy34AZDZD"
 
 function sendconfigsharecta(sender) {
