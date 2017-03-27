@@ -195,10 +195,10 @@ function sendconfigsharenakumacta(sender, pageid) {
 }
 function sendTextMessage(sender, pageid, text) {
 	let messageData = { text:text }
-	
+	let token_val = gettoken(pageid)
 	request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: {access_token:gettoken(pageid)},
+		qs: {access_token: token_val},
 		method: 'POST',
 		json: {
 			recipient: {id:sender},
