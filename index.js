@@ -198,7 +198,7 @@ function sendTextMessage(sender, pageid, text) {
 	let token_val = gettoken(pageid)
 	request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: {access_token: token_val},
+		qs: {access_token: token},
 		method: 'POST',
 		json: {
 			recipient: {id:sender},
