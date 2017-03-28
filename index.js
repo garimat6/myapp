@@ -74,7 +74,7 @@ app.post('/webhook/', function (req, res) {
 				continue;
 			}
 			
-			if (text == "configsharenakumacta") {
+			if (text == "nakuma") {
 			       sendconfigsharenakumacta(sender, page_id);
 				continue;
 			}
