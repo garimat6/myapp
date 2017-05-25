@@ -78,12 +78,12 @@ app.post('/webhook/', function (req, res) {
 			       sendconfigsharenakumacta(sender, page_id);
 				continue;
 			}
-			if (text == "help") {
+			/*if (text == "help") {
 		          let texttosend = "I can respond to following commands:"
 			  sendTextMessage(sender,page_id, texttosend)
 			  texttosend = "generic, linkaccnt, unlinkaccnt, sharecta, previewsharecta, configpreviewshare"
 			  sendTextMessage(sender, page_id, texttosend)
-			}
+			}*/
 			
 			//sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
 		}
